@@ -1,7 +1,15 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import React from "react"
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -23,18 +31,17 @@ export function DebugSheet({ content, children }: DebugSheetProps) {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        {children}
-      </SheetTrigger>
+      <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent side="right" className="w-[800px] sm:max-w-[800px]">
         <SheetHeader>
           <SheetTitle>GPT Response Debug</SheetTitle>
           <SheetDescription>
-            This sheet displays the raw JSON response from GPT for debugging purposes.
+            This sheet displays the raw JSON response from GPT for debugging
+            purposes.
           </SheetDescription>
         </SheetHeader>
-        <ScrollArea className="h-[calc(100vh-120px)] mt-4">
-          <pre className="text-sm whitespace-pre-wrap break-words">
+        <ScrollArea className="mt-4 h-[calc(100vh-120px)]">
+          <pre className="whitespace-pre-wrap break-words text-sm">
             {formatJSON(content)}
           </pre>
         </ScrollArea>
@@ -42,4 +49,3 @@ export function DebugSheet({ content, children }: DebugSheetProps) {
     </Sheet>
   )
 }
-

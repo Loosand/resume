@@ -1,8 +1,9 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useState } from "react"
+import { Bug } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
-import { Bug } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -13,9 +14,9 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useResumeStore } from '@/lib/store/resumeStore'
-import { useChatStore } from '@/lib/store/chatStore'
-import { JsonViewer } from '@/components/json/JsonViewer'
+import { useResumeStore } from "@/lib/store/resumeStore"
+import { useChatStore } from "@/lib/store/chatStore"
+import { JsonViewer } from "@/components/json/JsonViewer"
 
 interface DebugDialogProps {
   gptResponse: string
@@ -34,7 +35,7 @@ export function DebugDialog({ gptResponse }: DebugDialogProps) {
           <Bug className="h-4 w-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[800px] w-[90vw]">
+      <DialogContent className="w-[90vw] sm:max-w-[800px]">
         <DialogHeader>
           <DialogTitle>Debug Information</DialogTitle>
           <DialogDescription>
@@ -55,7 +56,9 @@ export function DebugDialog({ gptResponse }: DebugDialogProps) {
           </TabsContent>
           <TabsContent value="resume-markdown">
             <ScrollArea className="h-[60vh] w-full rounded-md border p-4">
-              <pre className="text-sm whitespace-pre-wrap">{resumeMarkdown}</pre>
+              <pre className="whitespace-pre-wrap text-sm">
+                {resumeMarkdown}
+              </pre>
             </ScrollArea>
           </TabsContent>
           <TabsContent value="chat-history">
@@ -65,7 +68,7 @@ export function DebugDialog({ gptResponse }: DebugDialogProps) {
           </TabsContent>
           <TabsContent value="gpt-response">
             <ScrollArea className="h-[60vh] w-full rounded-md border p-4">
-              <pre className="text-sm whitespace-pre-wrap">{gptResponse}</pre>
+              <pre className="whitespace-pre-wrap text-sm">{gptResponse}</pre>
             </ScrollArea>
           </TabsContent>
         </Tabs>
@@ -73,4 +76,3 @@ export function DebugDialog({ gptResponse }: DebugDialogProps) {
     </Dialog>
   )
 }
-

@@ -1,5 +1,6 @@
-import React from 'react'
-import { X } from 'lucide-react'
+import React from "react"
+import { X } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 
 interface FilePreviewProps {
@@ -7,17 +8,20 @@ interface FilePreviewProps {
   onRemove: (index: number) => void
 }
 
-export const FilePreview: React.FC<FilePreviewProps> = ({ files, onRemove }) => {
+export const FilePreview: React.FC<FilePreviewProps> = ({
+  files,
+  onRemove,
+}) => {
   return (
     <div className="flex flex-wrap gap-2">
       {files.map((file, index) => (
-        <div key={index} className="flex items-center bg-muted rounded-md p-2">
-          <span className="text-sm truncate max-w-[150px]">{file.name}</span>
+        <div key={index} className="flex items-center rounded-md bg-muted p-2">
+          <span className="max-w-[150px] truncate text-sm">{file.name}</span>
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            className="h-6 w-6 ml-2"
+            className="ml-2 h-6 w-6"
             onClick={() => onRemove(index)}
           >
             <X className="h-4 w-4" />
@@ -27,4 +31,3 @@ export const FilePreview: React.FC<FilePreviewProps> = ({ files, onRemove }) => 
     </div>
   )
 }
-

@@ -5,7 +5,7 @@ import { resumeSchema } from "./schema"
 import { resumeGuidancePrompt } from "@/lib/prompts/prompts"
 import { openai } from "@/lib/ai/openai"
 
-export const maxDuration = 300
+export const maxDuration = 60
 
 export async function POST(req: Request) {
   try {
